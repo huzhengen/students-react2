@@ -11,9 +11,9 @@ function MainPage() {
         descending: ''
     });
 
-//  Почему не редакс, а хуки. Я была малознакома с редаксом.
-//  Буквально на днях я разобралась что это такое. Что значат диспатч,
-//  стейт ту пропс, стор, что такое селекторы и т.д.
+// Why not redux, but hooks. I was unfamiliar with Redux.
+// Just the other day I figured out what it is. What does the dispatch mean,
+// state that props, store, what are selectors, etc.
 
     const [query, setQuery] = useState('');
     const [studentsDefault, setStudentsDefault] = useState([]);
@@ -102,19 +102,19 @@ function MainPage() {
     return (
         <main>
             <div className='page-primary-info'>
-                <h1 className='page-primary-info__head-name'>Студенты</h1>
+                <h1 className='page-primary-info__head-name'>Students</h1>
                 <button className='app-button' id='add-new-student-button'
                         onClick={() => history.push('/addStudent')}>
                     <div className='app-button_plus_sign'>
                         <div className='app-button_rectangle' />
                         <div className='app-button_rectangle_rotated' />
                     </div>
-                    <span>Добавить студента</span>
+                    <span>Add student</span>
                 </button>
             </div>
             <div className='search-block'>
                 <input type='search' className='search-bar'
-                       placeholder='Поиск по имени'
+                       placeholder='Search by name'
                        value={query}
                        onChange={(event) => updateInput(event.target.value)}
                 />
@@ -125,10 +125,10 @@ function MainPage() {
                             onChange={(event) =>
                                 sortingHandler(event)}
                     >
-                        <option selected value="full_name">Имя</option>
-                        <option value="rating">Рейтинг</option>
-                        <option value="age">Возраст</option>
-                        <option value="fav_colour">Цвет</option>
+                        <option selected value="full_name">Name</option>
+                        <option value="rating">Rating</option>
+                        <option value="age">Age</option>
+                        <option value="fav_colour">Color</option>
                     </select>
 
                     <input type='checkbox' className={'search-block__sorting_by-ascending'} name={'descending'}
@@ -139,11 +139,11 @@ function MainPage() {
                 </div>
             </div>
             <div className={'fields_names'}>
-                <span className={'fields_names__name'}>ФИО</span>
-                <span className={'fields_names__speciality'}>Специальность</span>
-                <span className={'fields_names__group'}>Группа</span>
-                <span className={'fields_names__age'}>Возраст</span>
-                <span className={'fields_names__rating'}>Рейтинг</span>
+                <span className={'fields_names__name'}>FULL NAME</span>
+                <span className={'fields_names__speciality'}>Specialty</span>
+                <span className={'fields_names__group'}>Group</span>
+                <span className={'fields_names__age'}>Age</span>
+                <span className={'fields_names__rating'}>Rating</span>
             </div>
             <StudentsList descending={sortInfo.descending}
                           criteria={sortInfo.criteria}

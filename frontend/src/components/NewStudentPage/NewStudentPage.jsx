@@ -4,7 +4,7 @@ import NewStudentForm from "../NewStudentForm/NewStudentForm";
 
 function NewStudentPage() {
     return <main>
-        <GoBackButton title='Назад к списку студентов' />
+        <GoBackButton title='Back to the list of students' />
         <NewStudentForm />
     </main>
 }

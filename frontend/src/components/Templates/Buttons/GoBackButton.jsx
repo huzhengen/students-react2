@@ -9,7 +9,7 @@ function GoBackButton() {
         <Button className={"app-button_transparent go_back"}
                 onClick={() => history.push('/')}>
             <Arrow/>
-            назад к списку студентов
+            Back to the list of students
         </Button>)
 }
 

@@ -4,18 +4,16 @@ import {Form, Input, Button, InputNumber } from "antd"
 import {useHistory} from "react-router-dom";
 import {BASE_URL, headers, upload} from "../../config";
 
+// Forms. There are libraries that make it easier to work with forms: storing values,
+// processing data when submitting a form, etc. The most popular of these is formic.
+// I chose antd forms because the documentation provided a convenient and simple example
+// load the file with its display, and I was also curious about the alternatives
+// formicu, because monopoly is bad. As long as there is a choice, products will evolve.
 
-//  Формы. Есть библиотеки, которые облегчают работу с формами: хранение значений,
-//  обработка данных при отправке формы и т.п. Самая популярная из них -- формик.
-//  Я выбрала antd forms, потому что в документации был удобный и простой пример
-//  загрузки файла с его отображением, а еще мне было интересно узнать об альтернативах
-//  формику, потому что монополия это плохо. Пока есть выбор, продукты будут развиваться.
+// upd: when editing, I gave up the ant uploader altogether and created new elements
 
-//  upd: при правках я вообще отказалась от ant uploader и создала новые элементы
-
-//  Axios vs fetch api. Библиотека -- лишняя нагрузка на сервер, хотя axios требует
-//  меньше кода, ее методы интуитивнее и она нормально обрабатывает ошибки с сервера
-
+// Axios vs fetch api. The library is an extra load on the server, although axios requires
+// less code, its methods are more intuitive and it handles errors from the server normally
 
 export default function NewStudentForm () {
 

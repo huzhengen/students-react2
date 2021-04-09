@@ -7,9 +7,8 @@ import {Button} from "antd";
 import { withRouter } from 'react-router-dom';
 import {BASE_URL, headers} from "../../config";
 
-
-//    Сортировка по цветам радуги привычнее и понятнее для пользователя, чем
-//    сортировка лексикографически или по 16-ричному числу
+// Sorting by rainbow colors is more familiar and more understandable for the user than
+// sort lexicographically or by hex
 
 const rainbowOrder = {
     "lgbt": 0,
@@ -60,17 +59,17 @@ function StudentsList(props) {
     if (isLoaded.error) {
         return <div className={'info'} >Ошибка: {isLoaded.error.message}</div>;
     } else if (! isLoaded.isLoaded) {
-        return <div className={'info'}>Загрузка...</div>;
+        return <div className={'info'}>Loading...</div>;
     }
     else if (! students){
-        return <div className={'info'} >Похоже, в базе не осталось студентов :(
+        return <div className={'info'} >It looks like there are no students left in the database :(
             <Button className={'app-button'}
                     onClick={() => props.history.push('/addStudent')}>
                 <div className='app-button_plus_sign'>
                     <div className='app-button_rectangle' />
                     <div className='app-button_rectangle_rotated' />
                 </div>
-                Добавить
+                Add
             </Button>
         </div>;
     }

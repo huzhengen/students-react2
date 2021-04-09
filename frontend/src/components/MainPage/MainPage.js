@@ -125,7 +125,7 @@ function MainPage() {
                             onChange={(event) =>
                                 sortingHandler(event)}
                     >
-                        <option selected value="full_name">Name</option>
+                        <option defaultValue value="full_name">Name</option>
                         <option value="rating">Rating</option>
                         <option value="age">Age</option>
                         <option value="fav_colour">Color</option>

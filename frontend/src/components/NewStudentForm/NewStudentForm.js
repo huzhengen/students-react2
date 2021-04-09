@@ -98,14 +98,13 @@ export default function NewStudentForm () {
                 <Form
                     layout="vertical"
                     className={"student-form"}
-                    name="student-form"
                     form={form}
                     onFinish={onFinish}
 
                     onValuesChange={(v) => v.speciality ? setSpeciality(v.speciality) : null}
                 >
                     <Form.Item
-                        name="photo_link"
+                        // name="photo_link"
                         rules={[
                             {
                                 required: true,
@@ -138,11 +137,11 @@ export default function NewStudentForm () {
 
                     </Form.Item>
 
-                    <Form.Item name={"id"} initialValue={0} />
+                    <Form.Item  initialValue={0} />
                     <div className={"fields-container"}>
                         <Form.Item
                             label="FULL NAME"
-                            name="full_name"
+                            // name="full_name"
                             rules={[
                                 {
                                     required: true,
@@ -168,7 +167,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label={"Email"}
-                            name={"email"}
+                            // name={"email"}
                             rules={[
                                 {
                                     required: true,
@@ -191,7 +190,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Age"
-                            name="age"
+                            // name="age"
                             rules={[
                                 {
                                     required: true,
@@ -212,7 +211,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Specialty"
-                            name="speciality"
+                            // name="speciality"
                             rules={[
                                 {
                                     required: true,
@@ -221,15 +220,15 @@ export default function NewStudentForm () {
                             ]}
                         >
                             <select className={"fields-container__speciality"}>
-                                <option value="" hidden={true} selected>Choose</option>
-                                {specialities.map(spec => (<option value={spec}>{spec}</option>))}
+                                <option value="" hidden={true} defaultValue>Choose</option>
+                                {specialities.map(spec => (<option key={spec} value={spec}>{spec}</option>))}
                             </select>
 
                         </Form.Item>
 
                         <Form.Item
                             label="Group"
-                            name="group"
+                            // name="group"
                             rules={[
                                 {
                                     required: true,
@@ -240,7 +239,7 @@ export default function NewStudentForm () {
                             <select className={"fields-container__speciality"}>
                                 <option value="" hidden={true}>Choose</option>
                                 {groups[pickedSpeciality] ?
-                                    groups[pickedSpeciality].map(group => (<option value={group}>{group}</option>))
+                                    groups[pickedSpeciality].map(group => (<option key={group} value={group}>{group}</option>))
                                     : <option value="" hidden={true}>Choose</option>
                                 }
                             </select>
@@ -248,7 +247,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Rating"
-                            name="rating"
+                            // name="rating"
                             rules={[
                                 {
                                     required: true,
@@ -263,7 +262,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="sex"
-                            name="sex"
+                            // name="sex"
                             rules={[
                                 {
                                     required: true,
@@ -272,7 +271,7 @@ export default function NewStudentForm () {
                             ]}
                         >
                             <select className={"fields-container__sex"}>
-                                <option value="" hidden={true} selected>Choose</option>
+                                <option value="" hidden={true} defaultValue>Choose</option>
                                 <option value="m">Male</option>
                                 <option value="f">Female</option>
                             </select>
@@ -280,7 +279,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Favorite color"
-                            name="fav_colour"
+                            // name="fav_colour"
                             rules={[
                                 {
                                     required: true,
@@ -290,7 +289,7 @@ export default function NewStudentForm () {
                         >
                             {width <= 690 ?
                                 <select className={"fields-container__color mobile"}>
-                                    <option value="" hidden={true} selected>Choose</option>
+                                    <option value="" hidden={true} defaultValue>Choose</option>
                                     <option value="red">red</option>
                                     <option value="orange">orange</option>
                                     <option value="yellow">yellow</option>
@@ -301,25 +300,25 @@ export default function NewStudentForm () {
                                 </select>
                             :
                                 <div className={"colors desktop"}>
-                                    <input type={"radio"} name={"color"} value={"red"} id={"red_color"}/>
+                                    <input type={"radio"} value={"red"} id={"red_color"}/>
                                     <label htmlFor={"red_color"} className={"color red"}/>
 
-                                    <input type={"radio"} name={"color"} value={"yellow"} id={"yellow_color"}/>
+                                    <input type={"radio"}  value={"yellow"} id={"yellow_color"}/>
                                     <label htmlFor={"yellow_color"} className={"color yellow"}/>
 
-                                    <input type={"radio"} name={"color"} value={"orange"} id={"orange_color"}/>
+                                    <input type={"radio"} value={"orange"} id={"orange_color"}/>
                                     <label htmlFor={"orange_color"} className={"color orange"}/>
 
-                                    <input type={"radio"} name={"color"} value={"green"} id={"green_color"}/>
+                                    <input type={"radio"}  value={"green"} id={"green_color"}/>
                                     <label htmlFor={"green_color"} className={"color green"}/>
 
-                                    <input type={"radio"} name={"color"} value={"blue"} id={"blue_color"}/>
+                                    <input type={"radio"}  value={"blue"} id={"blue_color"}/>
                                     <label htmlFor={"blue_color"} className={"color blue"}/>
 
-                                    <input type={"radio"} name={"color"} value={"black"} id={"black_color"}/>
+                                    <input type={"radio"}  value={"black"} id={"black_color"}/>
                                     <label htmlFor={"black_color"} className={"color black"}/>
 
-                                    <input type={"radio"} name={"color"} value={"lgbt"} id={"lgbt_color"}/>
+                                    <input type={"radio"} value={"lgbt"} id={"lgbt_color"}/>
                                     <label htmlFor={"lgbt_color"} className={"color lgbt"}/>
                                 </div>
                             }

@@ -17,13 +17,13 @@ import {BASE_URL, headers, upload} from "../../config";
 
 export default function NewStudentForm () {
 
-    const specialities = ["Математика", "Математика и КН", "ФИИТ", "Механика", "Прикладная информатика"];
+    const specialities = ["Mathematics", "Mathematics and CN", "FIIT", "Mechanics", "Applied Informatics"];
     const groups = {
-        "Математика": ["МТ-101", "МТ-202", "МТ-203", "МТ-401"],
-        "Математика и КН" : ["КН-101", "КН-102", "КН-103", "КН-201", "КН-202", "КН-303", "КН-401"],
-        "ФИИТ": ["ФТ-101", "ФТ-102", "ФТ-203", "ФТ-401"],
-        "Механика": ["МХ-101", "МХ-102", "МХ-103", "МХ-201", "МХ-202", "МХ-203", "МХ-301", "МХ-302", "МХ-401"],
-        "Прикладная информатика": ["ПИ-101", "ПИ-102", "ПИ-201", "ПИ-301", "ПИ-401"],
+        "Mathematics": ["МТ-101", "МТ-202", "МТ-203", "МТ-401"],
+        "Mathematics and CN" : ["КН-101", "КН-102", "КН-103", "КН-201", "КН-202", "КН-303", "КН-401"],
+        "FIIT": ["ФТ-101", "ФТ-102", "ФТ-203", "ФТ-401"],
+        "Mechanics": ["МХ-101", "МХ-102", "МХ-103", "МХ-201", "МХ-202", "МХ-203", "МХ-301", "МХ-302", "МХ-401"],
+        "Applied Informatics": ["ПИ-101", "ПИ-102", "ПИ-201", "ПИ-301", "ПИ-401"],
     };
 
     const [ form ] = Form.useForm();
@@ -93,7 +93,7 @@ export default function NewStudentForm () {
 
     return (
         <>
-            <h1 className={'page-primary-info__head-name'}>Новый студент</h1>
+            <h1 className={'page-primary-info__head-name'}>New student</h1>
             <div className={'form'}>
                 <Form
                     layout="vertical"
@@ -109,7 +109,7 @@ export default function NewStudentForm () {
                         rules={[
                             {
                                 required: true,
-                                message: "Это поле обязательно",
+                                message: "This field is required",
                             }
                         ]}
                     >
@@ -122,7 +122,7 @@ export default function NewStudentForm () {
                                         accept={'image/jpeg, image/png'}/>
                                  <div className={'avatar-area'} >ФИ</div>
                                  <div className={'upload'}>
-                                     <p className={'upload-title'}>Загрузить аватар</p>
+                                     <p className={'upload-title'}>Upload avatar</p>
                                      <p className={'upload-avatar-size'}>500х500</p>
                                  </div>
                              </label>
@@ -130,7 +130,7 @@ export default function NewStudentForm () {
                             <div className={'custom-upload'}>
                                 <img className={'avatar-area'} src={avatarState.base64} alt={'user avatar'} />
                                 <div className={'upload'}>
-                                    <p className={'upload-title'}>Аватар загружен</p>
+                                    <p className={'upload-title'}>Avatar uploaded</p>
                                     <p className={'upload-avatar-size'}>500х500</p>
                                 </div>
                             </div>
@@ -141,24 +141,24 @@ export default function NewStudentForm () {
                     <Form.Item name={"id"} initialValue={0} />
                     <div className={"fields-container"}>
                         <Form.Item
-                            label="ФИО"
+                            label="FULL NAME"
                             name="full_name"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 },
                                 () => ({
                                     validator(_, value) {
-                                        if (!value || value.trim().split(" ").length === 3 &&
-                                            value.trim().split(" ").every(value => value.match(/^[А-ЯЁ][а-яё]*/))) {
+                                        if (!value || value.trim().split(" ").length === 2 &&
+                                            value.trim().split(" ").every(value => value.match(/^[A-Z][a-z]*/))) {
                                             return Promise.resolve();
                                         }
                                         else if (!value || value.trim()
-                                            .split(" ").some(value => !value.match(/^[А-ЯЁ][а-яё]*/))) {
-                                            return Promise.reject("Пожалуйста введите данные с заглавной буквы кириллицей");
+                                            .split(" ").some(value => !value.match(/^[A-Z][a-z]*/))) {
+                                            return Promise.reject("Please enter data with a capital letter");
                                         }
-                                        return Promise.reject("Введите фамилию, имя, отчество кириллицей");
+                                        return Promise.reject("Enter the last name, first name");
                                     },
                                 })
                             ]}
@@ -172,7 +172,7 @@ export default function NewStudentForm () {
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле тоже обязательно"
+                                    message: "This field is also required"
                                 },
                                 () => ({
                                     validator(_, value) {
@@ -180,7 +180,7 @@ export default function NewStudentForm () {
                                             .match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
                                             return Promise.resolve();
                                         }
-                                        return Promise.reject("Введите валидный e-mail: mymail@example.com");
+                                        return Promise.reject("Enter valid e-mail: mymail@example.com");
                                     },
                                 })
                             ]}
@@ -190,19 +190,19 @@ export default function NewStudentForm () {
                         </Form.Item>
 
                         <Form.Item
-                            label="Возраст"
+                            label="Age"
                             name="age"
                             rules={[
                                 {
                                     required: true,
-                                    message: "И это поле обязательно",
+                                    message: "And this field is required",
                                 },
                                 () => ({
                                     validator(_, value) {
                                         if (!value || 18 <= value && value <= 100) {
                                             return Promise.resolve();
                                         }
-                                        return Promise.reject("Введите возраст от 18 до 100 лет");
+                                        return Promise.reject("Please enter an age between 18 and 100 years old");
                                     },
                                 }),
                             ]}
@@ -211,48 +211,48 @@ export default function NewStudentForm () {
                         </Form.Item>
 
                         <Form.Item
-                            label="Специальность"
+                            label="Specialty"
                             name="speciality"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 }
                             ]}
                         >
                             <select className={"fields-container__speciality"}>
-                                <option value="" hidden={true} selected>Выбрать</option>
+                                <option value="" hidden={true} selected>Choose</option>
                                 {specialities.map(spec => (<option value={spec}>{spec}</option>))}
                             </select>
 
                         </Form.Item>
 
                         <Form.Item
-                            label="Группа"
+                            label="Group"
                             name="group"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 },
                             ]}
                         >
                             <select className={"fields-container__speciality"}>
-                                <option value="" hidden={true}>Выбрать</option>
+                                <option value="" hidden={true}>Choose</option>
                                 {groups[pickedSpeciality] ?
                                     groups[pickedSpeciality].map(group => (<option value={group}>{group}</option>))
-                                    : <option value="" hidden={true}>Выбрать</option>
+                                    : <option value="" hidden={true}>Choose</option>
                                 }
                             </select>
                         </Form.Item>
 
                         <Form.Item
-                            label="Рейтинг"
+                            label="Rating"
                             name="rating"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 }
                             ]}
                         >
@@ -262,42 +262,42 @@ export default function NewStudentForm () {
                         </Form.Item>
 
                         <Form.Item
-                            label="Пол"
+                            label="sex"
                             name="sex"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 }
                             ]}
                         >
                             <select className={"fields-container__sex"}>
-                                <option value="" hidden={true} selected>Выбрать</option>
-                                <option value="m">Мужской</option>
-                                <option value="f">Женский</option>
+                                <option value="" hidden={true} selected>Choose</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
                             </select>
                         </Form.Item>
 
                         <Form.Item
-                            label="Любимый цвет"
+                            label="Favorite color"
                             name="fav_colour"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Это поле обязательно",
+                                    message: "This field is required",
                                 }
                             ]}
                         >
                             {width <= 690 ?
                                 <select className={"fields-container__color mobile"}>
-                                    <option value="" hidden={true} selected>Выбрать</option>
-                                    <option value="red">Красный</option>
-                                    <option value="orange">Оранжевый</option>
-                                    <option value="yellow">Жёлтый</option>
-                                    <option value="green">Зелёный</option>
-                                    <option value="blue">Синий</option>
-                                    <option value="black">Чёрный</option>
-                                    <option value="lgbt">ЛГБТ</option>
+                                    <option value="" hidden={true} selected>Choose</option>
+                                    <option value="red">red</option>
+                                    <option value="orange">orange</option>
+                                    <option value="yellow">yellow</option>
+                                    <option value="green">green</option>
+                                    <option value="blue">blue</option>
+                                    <option value="black">black</option>
+                                    <option value="lgbt">lgbt</option>
                                 </select>
                             :
                                 <div className={"colors desktop"}>
@@ -328,7 +328,7 @@ export default function NewStudentForm () {
                     </div>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" className="app-button create">
-                            Создать
+                            Create
                         </Button>
                     </Form.Item>
                 </Form>

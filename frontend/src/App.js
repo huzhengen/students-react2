@@ -10,7 +10,7 @@ import FailResponse from "./components/Responses/FailResponse";
 class App extends Component {
     render() {
         return (
-            <body>
+            // <body>
             <Router>
                 <Header />
                 <Switch>
@@ -20,7 +20,7 @@ class App extends Component {
                     <Route exact path='/responseFail' component={ FailResponse } />
                 </Switch>
             </Router>
-            </body>
+            // </body>
         );
     }
 }

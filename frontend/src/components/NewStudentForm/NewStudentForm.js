@@ -98,13 +98,14 @@ export default function NewStudentForm () {
                 <Form
                     layout="vertical"
                     className={"student-form"}
+                    name="student-form"
                     form={form}
                     onFinish={onFinish}
 
                     onValuesChange={(v) => v.speciality ? setSpeciality(v.speciality) : null}
                 >
                     <Form.Item
-                        // name="photo_link"
+                        name="photo_link"
                         rules={[
                             {
                                 required: true,
@@ -141,7 +142,7 @@ export default function NewStudentForm () {
                     <div className={"fields-container"}>
                         <Form.Item
                             label="FULL NAME"
-                            // name="full_name"
+                            name="full_name"
                             rules={[
                                 {
                                     required: true,
@@ -167,7 +168,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label={"Email"}
-                            // name={"email"}
+                            name={"email"}
                             rules={[
                                 {
                                     required: true,
@@ -190,7 +191,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Age"
-                            // name="age"
+                            name="age"
                             rules={[
                                 {
                                     required: true,
@@ -211,7 +212,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Specialty"
-                            // name="speciality"
+                            name="speciality"
                             rules={[
                                 {
                                     required: true,
@@ -228,7 +229,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Group"
-                            // name="group"
+                            name="group"
                             rules={[
                                 {
                                     required: true,
@@ -247,7 +248,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Rating"
-                            // name="rating"
+                            name="rating"
                             rules={[
                                 {
                                     required: true,
@@ -262,7 +263,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="sex"
-                            // name="sex"
+                            name="sex"
                             rules={[
                                 {
                                     required: true,
@@ -279,7 +280,7 @@ export default function NewStudentForm () {
 
                         <Form.Item
                             label="Favorite color"
-                            // name="fav_colour"
+                            name="fav_colour"
                             rules={[
                                 {
                                     required: true,

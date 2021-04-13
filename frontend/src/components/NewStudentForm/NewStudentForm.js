@@ -94,14 +94,13 @@ export default function NewStudentForm () {
     return (
         <>
             <h1 className={'page-primary-info__head-name'}>New student</h1>
-            <div className={'form'}>
+            <div className='form'>
                 <Form
                     layout="vertical"
                     className={"student-form"}
                     name="student-form"
                     form={form}
                     onFinish={onFinish}
-
                     onValuesChange={(v) => v.speciality ? setSpeciality(v.speciality) : null}
                 >
                     <Form.Item

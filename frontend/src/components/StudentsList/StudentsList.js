@@ -21,6 +21,7 @@ const rainbowOrder = {
 }
 
 function StudentsList(props) {
+    console.log('props', props)
 
     const deleteRequest = (id) => {
         fetch(BASE_URL + id, {
@@ -32,22 +33,20 @@ function StudentsList(props) {
 
     const studentsSort = (studentA, studentB) => {
         if (props.criteria === 'full_name') {
-            if (! props.descending)
+            if (!props.descending)
                 return studentB.full_name.localeCompare(studentA.full_name)
             else
                 return (studentB.full_name.localeCompare(studentA.full_name) * -1)
-        }
-        else if (props.criteria === 'fav_colour') {
-            if (! props.descending)
+        } else if (props.criteria === 'fav_colour') {
+            if (!props.descending)
                 return rainbowOrder[studentA.fav_colour.trim()] <
-                rainbowOrder[studentB.fav_colour.trim()] ? -1: 1
+                rainbowOrder[studentB.fav_colour.trim()] ? -1 : 1
             else
                 return rainbowOrder[studentA.fav_colour.trim()] <
-                rainbowOrder[studentB.fav_colour.trim()] ? 1: -1;
-        }
-        else {
-            if (! props.descending)
-                    return studentA[props.criteria] < studentB[props.criteria] ? -1: 1
+                rainbowOrder[studentB.fav_colour.trim()] ? 1 : -1;
+        } else {
+            if (!props.descending)
+                return studentA[props.criteria] < studentB[props.criteria] ? -1 : 1
             else
                 return studentA[props.criteria] < studentB[props.criteria] ? 1: -1
         }
@@ -57,12 +56,11 @@ function StudentsList(props) {
     const isLoaded = props.isLoaded
 
     if (isLoaded.error) {
-        return <div className={'info'} >Ошибка: {isLoaded.error.message}</div>;
-    } else if (! isLoaded.isLoaded) {
+        return <div className={'info'} >Error: {isLoaded.error.message}</div>;
+    } else if (!isLoaded.isLoaded) {
         return <div className={'info'}>Loading...</div>;
-    }
-    else if (! students){
-        return <div className={'info'} >It looks like there are no students left in the database :(
+    } else if (!students) {
+        return <div className={'info'}>It looks like there are no students left in the database :(
             <Button className={'app-button'}
                     onClick={() => props.history.push('/addStudent')}>
                 <div className='app-button_plus_sign'>
@@ -72,10 +70,9 @@ function StudentsList(props) {
                 Add
             </Button>
         </div>;
-    }
-    else {
-        let avatars = ! props.avatars.length ? []
-            : props.avatars
+    } else {
+        let avatars = !props.avatars.length ? []
+          : props.avatars
         return (
             <ul className={'items-container'}>
                 {  students
@@ -86,8 +83,8 @@ function StudentsList(props) {
                             className={'student-field'}
                         >
                             <span className={'student-field__photo'}>
-                                <img src={ ! avatars.length ? ""
-                                    : avatars.filter(a => a.avatar.id === st.photo_link.slice(12,))[0].avatar.avatar}
+                                <img src={!avatars.length ? ""
+                                  : avatars.filter(a => a.avatar.id === st.photo_link.slice(12,))[0].avatar.avatar}
                                      alt={'User picture'}/></span>
                             <span className={'fields_names__name'}>{st.full_name}</span>
                             <span className={'fields_names__speciality'}>{st.speciality}</span>

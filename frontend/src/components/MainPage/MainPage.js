@@ -48,20 +48,22 @@ function MainPage() {
         setQuery(query);
         setStudentsList(filtered);
     }
-
+    
     const sortingHandler = (e) => {
+        console.log('sort-e', e.target.name, e.target.value, e.target.checked)
         const key = e.target.name
         if (key === 'descending') {
             setSorting({...sortInfo, [key]: e.target.checked})
-        }
-        else {
+        } else {
             setSorting({...sortInfo, [key]: e.target.value})
         }
+        console.log(sortInfo)
     }
 
     const studentsHandler = (result) => {
-        const students = ! result.students ? null
-            : result.students
+        const students = !result.students ? null
+          : result.students
+        console.log(students)
         setStudentsDefault(students)
         setStudentsList(students)
         setIsLoaded({
@@ -77,8 +79,10 @@ function MainPage() {
     }
 
     const avatarsHandler = (result) => {
-        const avatars = ! result.avatars ? null
-            : result.avatars
+        console.log(1111111111)
+        console.log( result)
+        const avatars = !result.avatars ? null
+          : result.avatars
         setAvatars(avatars)
         setIsAvatarsLoaded({
             isAvatarsLoaded: true,
